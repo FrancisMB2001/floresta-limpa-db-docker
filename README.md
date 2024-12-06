@@ -8,7 +8,7 @@
 
 1. Clone the repository and navigate to the directory:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/FrancisMB2001/floresta-limpa-db-docker
    cd floresta-limpa-db-docker
     ```
 2. Start the docker container:
