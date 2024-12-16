@@ -22,7 +22,7 @@
 4. Connect to the database with this information:
     ```
     Host: localhost
-    Port: 5432
+    Port: 5435
     Database: floresta_limpa_db
     Username: postgres
     Password: admin
