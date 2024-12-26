@@ -1,0 +1,2 @@
+# Ignore .tar files, to avoid sending very large files to github
+.tar

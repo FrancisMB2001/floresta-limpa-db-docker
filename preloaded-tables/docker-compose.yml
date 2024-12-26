@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgis/postgis:17-3.4
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: floresta_limpa_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./01_init_script.sql:/docker-entrypoint-initdb.d/01_init_script.sql
+      - ./02_check_tables.sql:/docker-entrypoint-initdb.d/02_check_tables.sql
+      - ./backup-data-florestalimpa.tar:/docker-entrypoint-initdb.d/backup-data-florestalimpa.tar
+      - ./03_init-db.sh:/docker-entrypoint-initdb.d/03_init-db.sh
+      - postgres_data:/var/lib/postgresql/data
+    command: ["/bin/bash", "-c", "/docker-entrypoint-initdb.d/03_init-db.sh"]
+    networks:
+      - floresta_limpa_net
+
+volumes:
+  postgres_data:
+
+networks:
+  floresta_limpa_net:
+    driver: bridge
